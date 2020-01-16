@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<ui:composition 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+            <header>
+                <h:panelGrid columns="2">
+                    <p:graphicImage styleClass="logo" library="img" name="anillo.png" ></p:graphicImage>
+                    <h1>Uno para dominarlos a todos</h1>
+                </h:panelGrid>
+                <p:menubar>
+                    <p:menuitem url="admin_rangos.xhtml" value="Registrar Rangos" ></p:menuitem>
+                    <p:menuitem url="registrar_orco.xhtml" value="Registrar Guerrero"></p:menuitem>
+                    <p:menuitem url="ver_tropas.xhtml" value="Ver Tropas"></p:menuitem>
+                </p:menubar>
+            </header>
+</ui:composition>
