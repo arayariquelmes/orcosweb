@@ -13,3 +13,18 @@ and open the template in the editor.
     width: 100px;
     height:auto;
 }
+
+.fondo_oscuro{
+    background:#1f1f1f;
+    color:white;
+}
+.fondo_home{
+    background:#1f1f1f;
+    border: 2px solid #e6e6e6;
+    border-radius: 5px 5px 5px 5px;
+    width: 50%;
+    margin:0 auto;
+    margin-top: 10%;
+    color:white;
+    text-align:center;
+}
