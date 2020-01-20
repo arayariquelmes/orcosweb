@@ -66,4 +66,17 @@ public class GuerrerosDAO implements GuerrerosDAOLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public void update(Guerrero g) {
+          EntityManager em = emf.createEntityManager();
+        try{
+            em.merge(g);
+            em.flush();
+        }catch(Exception ex){
+            
+        }finally{
+            em.close();
+        }
+    }
 }

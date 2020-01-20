@@ -7,6 +7,7 @@ package cl.usm.orcosWeb.beans;
 
 import cl.usm.orcosEJB.dao.GuerrerosDAOLocal;
 import cl.usm.orcosEJB.dto.Guerrero;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -24,6 +25,9 @@ import javax.inject.Inject;
 @ViewScoped
 public class VerGuerrerosManagedBean implements Serializable {
 
+    @Inject
+    private EditarGuerreroManagedBean editarBean;
+    
     @Inject
     private GuerrerosDAOLocal guerrerosDAO;
     private List<Guerrero> guerreros;
@@ -45,6 +49,15 @@ public class VerGuerrerosManagedBean implements Serializable {
 
     public void setGuerreros(List<Guerrero> guerreros) {
         this.guerreros = guerreros;
+    }
+    
+    public void editarGuerrero(Guerrero editado) throws IOException{
+        //1. Asignar el guerrero seleccionado al que va a ser editado
+        this.editarBean.setGuerreroEditado(editado);
+        this.editarBean.setRangoSeleccionado(editado.getRango().getId());
+        //2. Redirigir a editar_orco para el proceso de edición
+        FacesContext.getCurrentInstance()
+                .getExternalContext().redirect("editar_orco.xhtml");
     }
     
     public void eliminarGuerrero(Guerrero eliminado){
