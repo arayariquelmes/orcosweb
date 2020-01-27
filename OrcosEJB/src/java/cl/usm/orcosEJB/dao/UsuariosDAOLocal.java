@@ -18,4 +18,5 @@ public interface UsuariosDAOLocal {
     
     void add(Usuario usuario);
     List<Usuario> findAll();
+    Usuario findByCorreoYClave(String correo, String clave);
 }

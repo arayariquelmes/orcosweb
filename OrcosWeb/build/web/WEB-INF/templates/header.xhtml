@@ -11,10 +11,16 @@ and open the template in the editor.
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui">
             <header class="fondo_oscuro">
-                <h:panelGrid columns="2">
-                    <p:graphicImage styleClass="logo" library="img" name="anillo.png" ></p:graphicImage>
-                    <h1>Uno para dominarlos a todos</h1>
-                </h:panelGrid>
+                <h:panelGroup styleClass="cont-paneles-header" layout="block">
+                    <h:panelGrid styleClass="panel-header-izquierda" columns="2">
+                        <p:graphicImage styleClass="logo" library="img" name="anillo.png" ></p:graphicImage>
+                        <h1>Uno para dominarlos a todos</h1>
+                    </h:panelGrid>
+                    <h:panelGrid columns="1" styleClass="panel-header-derecha">
+                        <p:outputLabel value="Bienvenido #{loginManagedBean.usuarioLogueado.nombre}" />
+                        <p:commandLink immediate="true" value="Cerrar Sesión" actionListener="#{loginManagedBean.cerrarSesion}" />
+                    </h:panelGrid>
+                </h:panelGroup>
                 <p:menubar>
                     <p:menuitem url="admin_rangos.xhtml" value="Registrar Rangos" ></p:menuitem>
                     <p:menuitem url="registrar_orco.xhtml" value="Registrar Guerrero"></p:menuitem>

@@ -51,4 +51,19 @@ public class UsuariosDAO implements UsuariosDAOLocal {
 
     // Add business logic below. (Right-click in editor and choose
     // "Insert Code > Add Business Method")
+
+    @Override
+    public Usuario findByCorreoYClave(String correo, String clave) {
+           EntityManager em = this.emf.createEntityManager();
+        try{
+            return em.createNamedQuery("Usuario.findByCorreoYClave", Usuario.class)
+                    .setParameter("correo", correo)
+                    .setParameter("clave", clave)
+                    .getSingleResult();
+        }catch(Exception ex){
+            return null;
+        }finally{
+            em.close();
+        }
+    }
 }

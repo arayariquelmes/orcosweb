@@ -28,3 +28,24 @@ and open the template in the editor.
     color:white;
     text-align:center;
 }
+
+.cont-login{
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 10%;
+}
+
+.panel-header-izquierda{
+    width:40%;
+    float:left;
+    
+}
+
+.panel-header-derecha{
+    width:20%;
+    float:right;
+    padding-top:20px;
+}
+.cont-paneles-header{
+    overflow:hidden;
+}
