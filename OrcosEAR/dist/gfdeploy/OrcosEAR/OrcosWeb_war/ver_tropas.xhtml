@@ -11,22 +11,41 @@
         <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
             <p:commandButton value="Sí" type="button" styleClass="ui-confirmdialog-yes" icon="pi pi-check" />
             <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="pi pi-times" />
-        </p:confirmDialog>  
+        </p:confirmDialog>
+        <h:panelGroup rendered="#{verGuerrerosManagedBean.guerreros.size() eq 0}"
+                      styleClass="panel-faltan-rangos panel-faltan-guerreros"
+                      layout="block"  >
+            <h3>Su ejercito se encuentran sin guerreros, Debe registrar tropas!</h3>
+            <h:link value="Registrar Guerrero" outcome="registrar_orco" />
+        </h:panelGroup>
         <p:panel id="contenedorTabla" header="Tropas existentes">
             <p:growl showSummary="true"  />
             <p:dataTable value="#{verGuerrerosManagedBean.guerreros}" 
+                         widgetVar="guerrerosTable"
                          emptyMessage="No hay guerreros registrados"
                          var="guerrero">
-                <p:column headerText="Nombre">
+                <p:column sortBy="#{guerrero.nombre}" headerText="Nombre">
                     <h:outputText value="#{guerrero.nombre}" />
                 </p:column>
-                <p:column headerText="Tipo">
+                <p:column sortBy="#{guerrero.tipo}" headerText="Tipo">
                     <h:outputText value="#{guerrero.tipo}" />
                 </p:column>
                 <p:column headerText="Nivel">
                     <h:outputText value="#{guerrero.nivel} pts." />
                 </p:column>
-                <p:column headerText="Rango">
+                <p:column filterBy="#{guerrero.rango.nombre}" filterMatchMode="exact" headerText="Rango">
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('guerrerosTable').filter()"
+                                         styleClass="custom-filter" >
+                            <f:selectItem itemLabel="Seleccione rango" 
+                                          itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItems value="#{rangosManagedBean.rangos}"
+                                           var="rango"
+                                           itemLabel="#{rango.nombre}"
+                                           itemValue="#{rango.nombre}"
+                                           />
+                        </p:selectOneMenu>
+                    </f:facet>
                     <h:outputText value="#{guerrero.rango.nombre}" />
                 </p:column>
                 <p:column headerText="Acciones">
